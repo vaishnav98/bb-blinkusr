@@ -1,0 +1,19 @@
+name: bbbusrblink # you probably want to 'snapcraft register <name>'
+version: '0.1' # just for humans, typically '1.2+git' or '1.3.2'
+summary: BoneScript Snap to Blink BeagleBone USR Leds # 79 char long summary
+description: |
+  Blinks all User LEDs Continously for 30s.
+
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: devmode # use 'strict' once you have the right plugs and slots
+
+parts:
+  blink:
+    # See 'snapcraft plugins'
+    plugin: nodejs
+    node-engine: 4.2.6
+    source: https://github.com/vaishnav98/blink-usr-snappy-bonescript.git
+
+apps:
+  blinkall:
+    command: bin/blink-usr
